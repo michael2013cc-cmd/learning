@@ -73,7 +73,7 @@ GitHub 开源 `grahamben-skill`（格雷厄姆视角 persona skill）：人物/�
 ### 5.1 Ingest 读取层
 
 - 输入适配：扫描 PDF（本例）与文字版（epub/txt/md，后续书）
-- 扫描路径：PyMuPDF 渲染页面 → OCR（tesseract `chi_sim`，质量已验证优秀）→ 抽检不合格时视觉模型逐页兜底
+- 扫描路径：PyMuPDF 渲染页面 → OCR（rapidocr-onnxruntime，PaddleOCR 中文 ONNX 模型，pip 单依赖；tesseract chi_sim 为备选）→ 抽检不合格时视觉模型逐页兜底
 - 输出：`ingest/<book>/chapters/ch-NN.md`（章节化文本）+ `page-map.md`（章节↔书页↔PDF 页映射）
 - 进度可断点续跑（按章保存）
 
@@ -157,6 +157,6 @@ skills/graham-advisor/
 ## 9. 环境依赖
 
 - Python 3.11（anaconda）+ PyMuPDF（已装 1.28.2）
-- tesseract + chi_sim 语言包（P1 安装验证）
+- rapidocr-onnxruntime（P1 安装验证；tesseract + chi_sim 备选）
 - QMind MCP（已连接）
 - git（工作区初始化）
