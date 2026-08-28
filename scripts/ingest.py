@@ -37,7 +37,7 @@ def ocr_image(image_path: Path) -> str:
     return "\n".join(line[1] for line in result)
 
 
-def format_chapter_md(title: str, pages: list[tuple[int, int, str]], offset: int = DEFAULT_OFFSET) -> str:
+def format_chapter_md(title: str, pages: list[tuple[int, int, str]]) -> str:
     parts = [f"# {title}\n"]
     for pdf_page, book_page, text in pages:
         parts.append(f"\n<!-- page: pdf={pdf_page} book={book_page} -->\n\n{text.strip()}\n")
