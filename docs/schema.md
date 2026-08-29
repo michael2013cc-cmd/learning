@@ -22,7 +22,9 @@ modernity: timeless | era-bound | needs-translation
 
 **原则**：<完整陈述>
 
-**原文引证**（书页 p.<N>）："<逐字引自 chapters/ch-NN.md 的原文，≥10 字>"
+**原文引证**（书页 p.<N>）：“<逐字引自 chapters/ch-NN.md 的原文，≥10 字>”
+
+**现代转译**：<modernity=needs-translation 时必填；其余可省略>
 
 **现代性说明**：<timeless 可一句；era-bound/needs-translation 必填>
 
@@ -34,7 +36,9 @@ modernity: timeless | era-bound | needs-translation
 
 **定义**：<…>
 
-**原文引证**（书页 p.<N>）："<…>"
+**原文引证**（书页 p.<N>）：“<…>”
+
+**现代转译**：<modernity=needs-translation 时必填；其余可省略>
 
 **适用场景**：<…>
 
@@ -50,7 +54,9 @@ modernity: timeless | era-bound | needs-translation
 - [ ] <条目 1>（依据 p.<N>）
 - [ ] <条目 2>（依据 p.<N>）
 
-**原文引证**（书页 p.<N>）："<…>"
+**原文引证**（书页 p.<N>）：“<…>”
+
+**现代转译**：<modernity=needs-translation 时必填；其余可省略>
 
 ## 框架卡（frameworks/）
 
@@ -58,7 +64,9 @@ modernity: timeless | era-bound | needs-translation
 
 **步骤**：1. … 2. …（每步附依据页）
 
-**原文引证**（书页 p.<N>）："<…>"
+**原文引证**（书页 p.<N>）：“<…>”
+
+**现代转译**：<modernity=needs-translation 时必填；其余可省略>
 
 **时代受限项**：<列出依赖时代数据的步骤及转译>
 
