@@ -1,4 +1,4 @@
-# 蒸馏卡片 Schema（v1，P1 定稿对象）
+# 蒸馏卡片 Schema（v2，P2 起生效；v1→v2 变更：checklist 正向案例字段、步骤级 modernity、主题索引视图）
 
 ## 通用 frontmatter
 
@@ -6,7 +6,7 @@
 id: <类型前缀>-<章号两位>-<序号两位>   # P=principle, M=model, C=checklist, F=framework
 type: principle | model | checklist | framework
 chapter: <int>
-pages: [<书页起>, <书页止>]
+pages: [<书页起>, <书页止>]   # 卡片内容（引证与依据引用）覆盖的书页范围
 importance: core | important | minor
 modernity: timeless | era-bound | needs-translation
 ---
@@ -15,6 +15,7 @@ modernity: timeless | era-bound | needs-translation
 - timeless：跨时代成立（如安全边际、市场先生）
 - era-bound：数值/规则依赖 1960-70 年代美国市场（如具体市盈率阈值），保留但标注
 - needs-translation：框架成立但数值需现代转译，必须附 **现代转译** 段
+- 步骤级粒度（v2）：frameworks 的每个步骤、checklists 的每个条目可单独附 `（era-bound：…）` 或 `（现代转译：…）` 行内标注；卡级 modernity 取其中最需要转译的级别
 
 ## 原则卡（principles/）
 
@@ -57,6 +58,8 @@ modernity: timeless | era-bound | needs-translation
 **原文引证**（书页 p.<N>）：“<…>”
 
 **现代转译**：<modernity=needs-translation 时必填；其余可省略>
+
+**正向案例**：<v2 新增，可选：一个逐项通过本清单的策略/行为示例，如"长期定投宽基指数"；无则省略>
 
 ## 框架卡（frameworks/）
 
