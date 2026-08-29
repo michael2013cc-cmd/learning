@@ -50,3 +50,10 @@ def test_check_card_pass():
 def test_check_card_fail():
     err = check_card(extract_cards(BAD_CARD)[0], {1: CHAPTER_MD})
     assert err is not None and "P-01-02" in err
+
+
+def test_extract_cards_crlf():
+    crlf = GOOD_CARD.replace("\n", "\r\n")
+    cards = extract_cards(crlf)
+    assert len(cards) == 1
+    assert check_card(cards[0], {1: CHAPTER_MD}) is None

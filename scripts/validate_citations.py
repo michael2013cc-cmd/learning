@@ -21,6 +21,7 @@ CARD_BLOCK_RE = re.compile(r"^---\n.*?\n---\n.*?(?=^---\n|\Z)", re.S | re.M)
 
 
 def extract_cards(text: str) -> list[dict]:
+    text = text.replace("\r\n", "\n")
     cards = []
     for block in CARD_BLOCK_RE.findall(text):
         m = FRONT_RE.match(block)
@@ -52,7 +53,7 @@ def load_chapters() -> dict[int, str]:
     chapters = {}
     for f in CHAP.glob("ch-*.md"):
         n = int(f.stem.split("-")[1])
-        chapters[n] = f.read_text(encoding="utf-8")
+        chapters[n] = f.read_text(encoding="utf-8").replace("\r\n", "\n")
     return chapters
 
 
