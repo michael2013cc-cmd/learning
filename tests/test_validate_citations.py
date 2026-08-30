@@ -5,6 +5,7 @@ CHAPTER_MD = """# 第 1 章 投资与投机：聪明投资者的预期收益
 <!-- page: pdf=30 book=12 -->
 
 投资操作是指经过透彻分析，能够保证本金安全并获得满意回报的操作。
+首要的一条准则就是：“投资操作是指经过透彻分析，能够保证本金安全并获得满意回报的操作。”
 """
 
 GOOD_CARD = """---
@@ -55,5 +56,25 @@ def test_check_card_fail():
 def test_extract_cards_crlf():
     crlf = GOOD_CARD.replace("\n", "\r\n")
     cards = extract_cards(crlf)
+    assert len(cards) == 1
+    assert check_card(cards[0], {1: CHAPTER_MD}) is None
+
+
+NESTED_CARD = """---
+id: P-99-01
+type: principle
+chapter: 1
+pages: [12, 12]
+importance: core
+modernity: timeless
+---
+# 嵌套引号
+
+**原文引证**（书页 p.12）：“首要的一条准则就是：“投资操作是指经过透彻分析，能够保证本金安全并获得满意回报的操作。””
+"""
+
+
+def test_nested_quotes():
+    cards = extract_cards(NESTED_CARD)
     assert len(cards) == 1
     assert check_card(cards[0], {1: CHAPTER_MD}) is None

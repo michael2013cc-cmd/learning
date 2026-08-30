@@ -10,7 +10,7 @@ DIST = ROOT / "distilled" / "the-intelligent-investor"
 CHAP = ROOT / "ingest" / "the-intelligent-investor" / "chapters"
 
 FRONT_RE = re.compile(r"^---\n(.*?)\n---\n", re.S)
-QUOTE_RE = re.compile(r"\*\*原文引证\*\*（书页 p\.(\d+)）：“(.+?)”", re.S)
+QUOTE_RE = re.compile(r"\*\*原文引证\*\*（书页 p\.(\d+)）：“(.+)”")
 
 
 def normalize(s: str) -> str:
