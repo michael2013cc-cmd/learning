@@ -19,12 +19,19 @@ CHAPTERS = [
 ]
 
 
+def is_low_char(text: str) -> bool:
+    """Return True if OCR text has fewer than 50 characters (likely a blank/image-only page)."""
+    return len(text) < 50
+
+
 def extract(name: str, title: str, start: int, end: int) -> Path:
     pages = []
     with tempfile.TemporaryDirectory() as tmp:
         for p in range(start, end + 1):
             img = render_page(PDF, p, Path(tmp) / f"p{p:03d}.png")
             text = ocr_image(img)
+            if is_low_char(text):
+                print(f"  WARN low-char page {p}", file=sys.stderr)
             pages.append((p, pdf_to_book(p), text))
             print(f"  ocr pdf p{p} -> {len(text)} chars", file=sys.stderr)
     out = OUT / "chapters" / f"{name}.md"
@@ -34,6 +41,8 @@ def extract(name: str, title: str, start: int, end: int) -> Path:
 
 
 def main() -> None:
+    if not PDF.exists():
+        sys.exit(f"error: {PDF} 不存在")
     targets = sys.argv[1:] or [c[0] for c in CHAPTERS]
     for name, title, start, end in CHAPTERS:
         if name in targets:

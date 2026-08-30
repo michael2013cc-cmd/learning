@@ -3,6 +3,22 @@ from pathlib import Path
 
 from scripts.ingest import pdf_to_book, book_to_pdf, format_chapter_md, parse_page_markers, render_page, ocr_image
 
+
+def test_low_char_warning_threshold():
+    from scripts.extract_chapters import is_low_char
+    assert is_low_char("") and is_low_char("x" * 49)
+    assert not is_low_char("x" * 50)
+
+
+def test_render_pages_batch(tmp_path):
+    from scripts.ingest import render_pages
+    pdf = Path("scratch/ii.pdf")
+    if not pdf.exists():
+        pytest.skip("scratch/ii.pdf 不存在")
+    outs = render_pages(pdf, [61, 62], tmp_path)
+    assert len(outs) == 2 and all(o.exists() for o in outs)
+
+
 PDF = Path("scratch/ii.pdf")
 
 

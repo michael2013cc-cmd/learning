@@ -46,3 +46,18 @@ def format_chapter_md(title: str, pages: list[tuple[int, int, str]]) -> str:
 
 def parse_page_markers(md: str) -> list[int]:
     return [int(pdf) for pdf, _book in re.findall(r"<!-- page: pdf=(\d+) book=(\d+) -->", md)]
+
+
+def render_pages(pdf_path: Path, pdf_pages: list[int], out_dir: Path, dpi: int = 150) -> list[Path]:
+    """Batch-render multiple PDF pages to PNG files using a single document handle."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    outs: list[Path] = []
+    doc = pymupdf.open(str(pdf_path))
+    try:
+        for p in pdf_pages:
+            out = out_dir / f"p{p:03d}.png"
+            doc[p - 1].get_pixmap(dpi=dpi).save(str(out))
+            outs.append(out)
+    finally:
+        doc.close()
+    return outs
