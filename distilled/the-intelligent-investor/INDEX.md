@@ -26,7 +26,7 @@
 - P-08-03 利用市场情绪而非被其支配 (ch.8, p.132-142, timeless, core)
 - P-08-04 简单而流行的赚钱方法必然失效 (ch.8, p.127-130, timeless, important)
 - P-08-05 不等待完美时机，在合理价格下持续投资 (ch.8, p.141-141, timeless, important)
-- P-09-01 多数基金长期跑不赢市场：主动管理的系统性证据 (ch.9, p.152-154, needs-translation, core)
+- P-09-01 多数基金长期跑不赢市场：主动管理的系统性证据 (ch.9, p.153-154, needs-translation, core)
 - P-09-02 业绩基金的幻象：短期辉煌必然伴随灾难性损失 (ch.9, p.155-161, timeless, important)
 - P-20-01 安全边际是买价与内在价值之间的缓冲，为错误与不确定性留余地 (ch.20, p.342-346, timeless, core)
 - P-20-02 安全边际必须与分散化结合才能发挥概率优势 (ch.20, p.344-347, timeless, core)
