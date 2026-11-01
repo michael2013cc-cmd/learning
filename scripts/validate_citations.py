@@ -49,11 +49,19 @@ def check_card(card: dict, chapters: dict[int, str]) -> str | None:
     return None
 
 
+SPECIAL_CHAPTERS = {"preface.md": 0, "postscript.md": 21, "appendices.md": 22}
+
+
 def load_chapters() -> dict[int, str]:
     chapters = {}
     for f in CHAP.glob("ch-*.md"):
         n = int(f.stem.split("-")[1])
         chapters[n] = f.read_text(encoding="utf-8").replace("\r\n", "\n")
+    # 导言按第 0 章、后记按第 21 章、附录 1-7 按第 22 章登记（非 ch-NN 命名）
+    for name, n in SPECIAL_CHAPTERS.items():
+        p = CHAP / name
+        if p.exists():
+            chapters[n] = p.read_text(encoding="utf-8").replace("\r\n", "\n")
     return chapters
 
 
