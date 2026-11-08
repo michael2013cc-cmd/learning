@@ -16,7 +16,7 @@
 |---|---|---|
 | 提取章节（OCR） | `python -m scripts.extract_chapters ch-NN` | 生成 `ingest/the-intelligent-investor/chapters/ch-NN.md` |
 | 引证校验 | `python scripts/validate_citations.py` | `all citations verified` |
-| 测试 | `python -m pytest tests/ -q` | 12 passed（含一个需要 `scratch/ii.pdf` 的 slow 冒烟） |
+| 测试 | `python -m pytest tests/ -q` | 10 passed, 2 skipped（2 个依赖 `scratch/ii.pdf`，其一为 slow 冒烟） |
 
 提取新章节前，先在 `scripts/extract_chapters.py` 的 `CHAPTERS` 表登记：
 `("ch-NN", "章节标题", PDF页起, PDF页止)`。运行时若 stderr 出现 `WARN low-char page N`，表示该页疑似 OCR 失败，抽检时重点关注。
@@ -42,7 +42,7 @@ rapidocr 在约 18% 的页面会整句缺失，因此每章蒸馏前必须：
 
 ## 5. 索引与检索
 
-- `distilled/the-intelligent-investor/INDEX.md`：主索引（按卡型分节，含章号/页码/现代性/重要性）+ 主题索引（9 个问答场景聚合跨章卡）
+- `distilled/the-intelligent-investor/INDEX.md`：主索引（按卡型分节，含章号/页码/现代性/重要性）+ 主题索引（17 个主题场景聚合跨章卡）
 - 使用路径：按问题场景查主题索引 → 定位卡 id → 读卡正文 → 带书页页码回答
 
 ## 6. 格雷厄姆顾问回答样式（原型已定稿）

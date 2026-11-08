@@ -26,7 +26,7 @@
 2. 环境：Python 3.11 + `pip install -r requirements.txt`。**勿升级** `onnxruntime`（必须 1.19.2）与 `numpy`（1.26.4）。
 3. 自检三条命令：
    ```bash
-   python -m pytest tests/ -q            # 12 passed
+   python -m pytest tests/ -q            # 10 passed, 2 skipped（缺源书 PDF 时；2026-11 更新）
    python scripts/validate_citations.py  # all citations verified
    ```
 4. 阅读顺序：本文件 → `docs/USAGE.md` → `docs/schema.md` → `docs/p1-notes.md`（翻一遍视觉校正记录，了解 OCR 缺陷形态）。
